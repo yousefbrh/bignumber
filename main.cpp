@@ -24,7 +24,7 @@ int compare(string obj1,string obj2)
         {
             return 1;
         }
-        else if ((obj1[i]) - '0' <= (obj2[i - 1]) - '0')
+        else if ((obj1[i]) - '0' < (obj2[i - 1]) - '0')
         {
             return -1;
         }
@@ -117,9 +117,10 @@ void sumWithPositive(string num1, string num2, string &num3)
     for (int i = num2.length() - 1 ; i >= 0  ; i--)
     {
         cout << "entered to for:" << endl;
-        tempInt = ((num1[i + n] - '0') + (num2[i] - '0') + carry) % 10;
+        int tempSum = (num1[i + n] - '0') + (num2[i] - '0') + carry;
+        tempInt = tempSum % 10;
         num3.append(to_string(tempInt));
-        carry = ((num1[i + n] - '0') + (num2[i] - '0') + carry) / 10;
+        carry = tempSum / 10;
         cout << num3 << endl;
 
         if (i == 0 && carry == 1 && (num1.length() == num2.length()))
@@ -189,8 +190,9 @@ string sum (string num1 , string num2)
     return reverse(num3);
 }
 int main() {
-    string b1 = "-5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555529";
-    string b2 = "544";
-    cout << sum(b1,b2) << endl;
+    string b1 = "529";
+    string b2 = "-544";
+//    cout << sum(b1,b2) << endl;
+cout << compare(b2,b1)<< endl;
     return 0;
 }
